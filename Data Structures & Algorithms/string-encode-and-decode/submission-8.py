@@ -1,0 +1,30 @@
+class Solution:
+
+    def encode(self, strs: List[str]) -> str:
+        output = ""
+        for s in strs:
+            n = len(s)
+            output = output + str(n) + ";" + s
+        return output
+
+    def decode(self, s: str) -> List[str]:
+        num = 0
+        number_str = ""
+        output = []
+        index = 0
+        while index < len(s):
+            if s[index] == ";":
+                print(number_str)
+                num = int(number_str)
+                index += 1
+                output.append(s[index:index + num])
+                number_str = ""
+                index += num
+            else:   
+                number_str += s[index]
+                index += 1
+        return output
+
+            
+
+        
